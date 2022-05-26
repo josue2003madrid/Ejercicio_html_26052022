@@ -1,0 +1,56 @@
+//Cosigue el numero
+var textoCubana= document.getElementById("TxtCubana");
+// hace funcionar el boton
+var textoMilaneza = document.getElementById("TxtMilaneza");
+// hace funcionar el boton
+var textoJamon = document.getElementById("TxtJamon");
+// hace funcionar el boton
+var botoncarcular = document.getElementById("btnCalcular");
+//Funcionamiento de boton reiniciar
+var botonOtraTable = document.getElementById("btnReiniciar");
+//funcionamiento de boton calcular
+
+// hace funcionar el boton
+botoncarcular.addEventListener("click",FuncionTabla);
+botonOtraTable.addEventListener("click",FuncionReiniciar);
+textoNumero.addEventListener("keyup",tablaporEnter);
+
+// Metodo
+function FuncionTabla(){
+    var numeroC = parseInt(textoCubana.value);
+    var numeroJ = parseInt(textoJamon.value);
+    var numeroM = parseInt(textoMilaneza.value);
+    if(numeroC>0 || numeroJ>0 || numeroM>0){
+        var totalc=numeroC*36;
+        var totalm=numeroM*32;
+        var totalj=numeroJ*25;
+        var total=totalc+totalj+totalm;
+        var newdoc=document.createElement("div");
+        var t = document.createTextNode("El total a pagar es:"+total);
+        newdoc.appendChild(t);
+        document.getElementsByTagName("h3")[0].appendChild(newdoc);
+    }
+
+    /*for(var i = 1; i <= 10; i++){
+        //a la variable "newdoc" se le agrega el elemento diiv
+        var newdoc = document.createElement("div");
+        //Crea la cadena y la guarda en la variable "t"
+        var t = document.createTextNode(numero + " X "+ i +" = " + (numero*i));
+        newdoc.appendChild(t);
+        document.getElementsByTagName("h3")[0].appendChild(newdoc);
+    }*/
+}
+function FuncionReiniciar(){
+    location.reload(true);
+}
+function tablaporEnter(evento){
+    //Detecta la tecla enter
+    if(evento.keyCode == 13)
+    {
+        FuncionTabla();
+    }
+}
+    //detecta la tecla backspace
+    if(evento.keyCode == 8){
+        FuncionReiniciar();
+    }
